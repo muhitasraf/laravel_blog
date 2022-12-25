@@ -5,7 +5,7 @@
             <li class="nav-item">
                 <a class="nav-link active" href="#submenu0" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                     <span data-feather="home"></span>
-                    Dashboard <span class="sr-only">(current)</span>
+                    Dashboard {{auth()->user()->id}} <span class="sr-only">(current)</span>
                 </a>
             </li>
             <div id='submenu0' class="collapse sidebar-submenu">
