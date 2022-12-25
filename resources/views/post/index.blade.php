@@ -26,7 +26,9 @@
                         <td>{{$post['id']}}</td>
                         <td>{{$post['title']}}</td>
                         <td>{{$post['slug']}}</td>
-                        <td>{{asset('uploads/images/image_63a52a13a92434.23625471seBzMwCY3Y.jpg')}}</td>
+                        <td>
+                            <img src="{{url('uploads/post_images/'.$post['thumbnail_path'])}}" height="80px" width="100px" alt="Image"/>
+                        </td>
                         <td>{{$post['content']}}</td>
                         <td>{{$post['status']}}</td>
                         <td>

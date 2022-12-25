@@ -18,7 +18,6 @@ class PostController extends Controller
     }
 
     public function create(){
-        // dd($_POST);
         $title = 'Create Post';
         $all_category = Category::select('id','name','slug','status')->get();
         return view('post/create',compact('title','all_category'));
@@ -34,7 +33,6 @@ class PostController extends Controller
         if ($validator->fails()) {
             return redirect('post/create')->withErrors($validator)->withInput();
         }
-        // dd($request->input('post_category'));
         $photo = $request->file('post_image');
         $filename = uniqid('post_image_',true).Str::random(10).'.'.$photo->getClientOriginalExtension();
         if($photo->isValid()){
