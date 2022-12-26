@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -69,13 +70,7 @@ class AuthController extends Controller
         $data = [];
         $data ['current_time'] = date('Y m d, H:m:s');
         $data ['site_title'] = "Blog";
-        $data ['links'] = [
-            'Facebook' => 'facebook.com',
-            'Twtiter' => 'twtiter.com',
-            'Youtube' => 'youtube.com',
-            'Linkdin' => 'linkdin.com',
-            'Instagram' => 'instagram.com'
-        ];
+        $data ['category'] = Category::all();
         return view('login',$data);
     }
 

@@ -24,12 +24,12 @@
                     @foreach($all_post as $post)
                     <tr>
                         <td>{{$post['id']}}</td>
-                        <td>{{$post['title']}}</td>
-                        <td>{{$post['slug']}}</td>
+                        <td class="col-md-1">{{$post['title']}}</td>
+                        <td class="col-md-1">{{$post['slug']}}</td>
                         <td>
                             <img src="{{url('uploads/post_images/'.$post['thumbnail_path'])}}" height="80px" width="100px" alt="Image"/>
                         </td>
-                        <td>{!! \Illuminate\Support\Str::limit(strip_tags($post['content']), 20, '.....') !!}</td>
+                        <td class="col-md-2">{!! \Illuminate\Support\Str::limit(strip_tags($post['content']), 100, ' ......') !!}</td>
                         <td>{{$post['status']==1 ? 'Active' : 'De-Active'}}</td>
                         <td>
                             <a class="btn btn-info mr-1" href="{{route('post.show',$post['id'])}}">Details</a>

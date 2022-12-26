@@ -7,7 +7,7 @@
     @foreach ($all_post as $post)
         <div class="blog-post">
             <h2 class="blog-post-title">{{$post->title}}</h2>
-            <p class="blog-post-meta">{!! \Illuminate\Support\Str::limit(strip_tags($post->content),250,'...') !!}</p>
+            <p class="blog-post-meta">{!! \Illuminate\Support\Str::limit(strip_tags($post->content),280,'<a href="'.url('post/details/'.$post->id).'"> Continue reading</a>') !!}</p>
             <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
         </div>
     @endforeach

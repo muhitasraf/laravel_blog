@@ -64,13 +64,64 @@ class PostController extends Controller
         }
     }
 
+    public function edit($id){
+        $title = 'Edit Post';
+        $single_post = Post::where('id',$id)->get();
+        $all_category = Category::all();
+        return view('post/edit',compact('title','all_category','single_post'));
+    }
+
+    public function update(Request $request){
+        $validator = Validator::make($request->all(), [
+            'post_title' => 'required',
+            'post_content' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('post/edit')->withErrors($validator)->withInput();
+        }
+        $photo = $request->file('post_image');
+        if(!empty($photo)){
+            $filename = uniqid('post_image_',true).Str::random(10).'.'.$photo->getClientOriginalExtension();
+            if($photo->isValid()){
+                $photo->move(public_path().'/uploads/post_images/',$filename);
+            }
+        }else{
+            $filename = $request->input('prev_post_image');
+        }
+        $title = 'Create Post';
+        $id = $request->input('id');
+        $post_title = $request->input('post_title');
+        $title_slug = Str::slug($post_title);
+        $post_category = $request->input('post_category');
+        $post_content = $request->input('post_content');
+        $status = $request->input('status');
+        $all_post = Post::all();
+        $post_data = [
+            'user_id'=>1,
+            'category_id'=>$post_category,
+            'title'=>$post_title,
+            'slug'=>$title_slug,
+            'content'=>$post_content,
+            'thumbnail_path'=> $filename,
+            'status'=> $status
+        ];
+        try{
+            Post::where('id',$id)->update($post_data);
+            session()->flash('message','Successfully Added');
+            return view('post/index',compact('title','all_post'));
+        }catch(Exception $e){
+            session()->flash('message',$e->getMessage());
+            return redirect()->back()->withInput();
+        }
+    }
+
     public function details($id){
         $data = [];
         $data ['current_time'] = date('Y m d, H:m:s');
         $data ['site_title'] = "Blog";
         $data ['details_post'] = Post::where('id',$id)->get();
         $category = Category::all();
-        // dd(Post::where('id',$id)->get());
         return view('post',compact('data','category'));
     }
 }

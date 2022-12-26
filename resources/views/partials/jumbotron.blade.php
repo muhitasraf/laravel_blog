@@ -11,26 +11,26 @@
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 <div class="card-body d-flex flex-column align-items-start">
                     <strong class="d-inline-block mb-2 text-primary">World</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">{{$all_post[0]['title']}}</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Nov 12</div>
-                    {!! \Illuminate\Support\Str::limit($all_post[0]['content'], 150, ' <a href="'.url('post/details/'.$all_post[0]['id']).'">Continue reading</a>') !!}
+                    <h4 class="mb-0">
+                        <a class="text-dark" href="{{url('post/details/'.$all_post[2]['id'])}}">{!! \Illuminate\Support\Str::limit(strip_tags($all_post[2]['title']), 40,'....') !!}</a>
+                    </h4>
+                    <div class="mb-1 text-muted">{{$all_post[2]['created_at']}}</div>
+                    {!! \Illuminate\Support\Str::limit(strip_tags($all_post[2]['content']), 125,'<a href="'.url('post/details/'.$all_post[2]['id']).'"> Continue reading</a>') !!}
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+                <img class="card-img-right flex-auto d-none d-md-block" src="{{url('uploads/post_images/'.$all_post[2]['thumbnail_path'])}}" height="250px" width="200px" alt="Card image cap">
             </div>
         </div>
         <div class="col-md-6">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 <div class="card-body d-flex flex-column align-items-start">
                     <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">{{$all_post[3]['title']}}</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
-                    {!! \Illuminate\Support\Str::limit(strip_tags($all_post[3]['content']), 150, ' <a href="'.url('post/details/'.$all_post[3]['id']).'">Continue reading</a>') !!}
+                    <h4 class="mb-0">
+                        <a class="text-dark" href="{{url('post/details/'.$all_post[1]['id'])}}">{!! \Illuminate\Support\Str::limit(strip_tags($all_post[1]['title']), 40,'....') !!}</a>
+                    </h4>
+                    <div class="mb-1 text-muted">{{$all_post[1]['created_at']}}</div>
+                    {!! \Illuminate\Support\Str::limit(strip_tags($all_post[1]['content']), 125,'<a href="'.url('post/details/'.$all_post[1]['id']).'"> Continue reading</a>') !!}
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+                <img class="card-img-right flex-auto d-none d-md-block" src="{{url('uploads/post_images/'.$all_post[1]['thumbnail_path'])}}" height="250px" width="200px" alt="Card image cap">
             </div>
         </div>
     </div>
