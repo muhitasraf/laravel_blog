@@ -69,7 +69,8 @@ class PostController extends Controller
         $data ['current_time'] = date('Y m d, H:m:s');
         $data ['site_title'] = "Blog";
         $data ['details_post'] = Post::where('id',$id)->get();
+        $category = Category::all();
         // dd(Post::where('id',$id)->get());
-        return view('post',compact('data'));
+        return view('post',compact('data','category'));
     }
 }

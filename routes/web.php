@@ -35,6 +35,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/post/update', [PostController::class, 'update'])->name('post.update');
     Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
 
-    // Route::get('/post/details/{id}', [PostController::class, 'details'])->name('post.details');
+    Route::get('/post/details/{id}', [PostController::class, 'details'])->name('post.details');
 
 });
