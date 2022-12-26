@@ -17,7 +17,14 @@
         {{session('message')}}
     </div>
     @endif
-
+    @auth
+        <div class="row">
+            <div class="col">
+                You Are Already Logedin
+            </div>
+        </div>
+    @endauth
+    @guest
     <div class="form-group">
         <label for="email">Email address</label>
         <input type="text" class="form-control email" id="email" name="email" value="{{old('email')}}" placeholder="Enter email">
@@ -27,5 +34,7 @@
         <input type="password" class="form-control password" id="password" name="password" value="{{old('password')}}" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    @endguest
+
 </form>
 @endsection

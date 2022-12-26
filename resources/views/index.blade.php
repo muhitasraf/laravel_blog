@@ -4,21 +4,13 @@
     <h3 class="pb-3 mb-4 font-italic border-bottom">
         From the Firehose
     </h3>
-
-    <div class="blog-post">
-        <h2 class="blog-post-title">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-    </div><!-- /.blog-post -->
-
-    <div class="blog-post">
-        <h2 class="blog-post-title">Another blog post</h2>
-        <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-    </div><!-- /.blog-post -->
-
-    <div class="blog-post">
-        <h2 class="blog-post-title">New feature</h2>
-        <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
-    </div><!-- /.blog-post -->
+    @foreach ($all_post as $post)
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{$post->title}}</h2>
+            <p class="blog-post-meta">{!! \Illuminate\Support\Str::limit(strip_tags($post->content),250,'...') !!}</p>
+            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+        </div>
+    @endforeach
 
     <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>

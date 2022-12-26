@@ -26,7 +26,7 @@ class AuthController extends Controller
     }
 
     public function porcessRegistration(Request $request){
-        
+
         $validator = Validator::make($request->all(), [
             'fullname' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -89,12 +89,11 @@ class AuthController extends Controller
         if(auth()->attempt($credential)){
             echo 'Successfully Login';
             session()->flash('message','Successfully Login');
-            return redirect()->route('login');
+            return redirect()->route('profile');
         }else{
             session()->flash('message',"Email or Password doesn't match.");
             return redirect()->back()->withInput();
         }
-        
     }
 
     public function logout(){

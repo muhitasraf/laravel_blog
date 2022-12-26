@@ -53,16 +53,14 @@
             <div class="row mb-5">
                 <div class="col-md-3"> Post Detils: </div>
                 <div class="col-md-9">
-                    <div id="editor">
-                    </div>
-                    <textarea name="post_content" style="display:none" id="hiddenArea"></textarea>
+                    <textarea name="post_content"  id="summernote">{{old('post_content')}}</textarea>
                 </div>
             </div>
 
             <div class="row mb-2">
                 <div class="col-md-3"> Post Tag: </div>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" name="post_keywords" />
+                    <input type="text" class="form-control" name="post_keywords" value="{{old('post_keywords')}}" />
                 </div>
             </div>
 
@@ -80,13 +78,9 @@
                 <button class="btn btn-secondary float-left" type="submit" id="">Save Post</button>
             </div>
         </form>
-
     </div>
     <div class="col-md-2"></div>
 
 </div>
 
-<script>
-
-</script>
 @stop

@@ -1,10 +1,7 @@
 <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
-        <!-- <div class="col-4 pt-1">
-            <a class="text-muted" href="#">{{$current_time}}</a>
-        </div> -->
-        <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">{{$site_title}}</a>
+        <div class="col-4">
+            <a class="blog-header-logo text-dark" href="#">Blog</a>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="text-muted" href="#">
@@ -14,12 +11,12 @@
                 </svg>
             </a>
             @auth
-            <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('profile')}}">Profile</a>
-            <a class="btn btn-sm btn-outline-secondary" href="{{route('logout')}}">Logout</a>
+                <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('profile')}}">Profile</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{{route('logout')}}">Logout</a>
             @endauth
             @guest
-            <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('register')}}">Sign up</a>
-            <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Login</a>
+                <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('register')}}">Sign up</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Login</a>
             @endguest
         </div>
     </div>
@@ -27,8 +24,8 @@
 
 <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-        @foreach($links as $title => $link)
-        <a class="p-2 text-muted" href="{{$link}}">{{$title}}</a>
+        @foreach($category as $cat)
+        <a class="p-2 text-muted" href="">{{$cat->name}}</a>
         @endforeach
     </nav>
 </div>

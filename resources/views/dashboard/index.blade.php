@@ -15,8 +15,9 @@
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Include quill Editor stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- Include Summernote Editor stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
 
     <style>
         .bd-placeholder-img {
@@ -40,7 +41,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{{url('/')}}">My Blog</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,19 +76,6 @@
         </div>
     </div>
 
-    <!-- Include the Quill library -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-    <!-- Initialize Quill editor -->
-    <script>
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        quill.on('text-change', function(delta, oldDelta, source) {
-            var content = $(".ql-editor").html();
-            $('#hiddenArea').val(content);
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')
@@ -96,6 +83,14 @@
     <script src="https://getbootstrap.com/docs/4.6/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Hello Bootstrap 4',
+            tabsize: 2,
+            height: 100
+        });
+    </script>
     <script>
         /* globals Chart:false, feather:false */
         (function() {

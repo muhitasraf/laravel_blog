@@ -63,4 +63,13 @@ class PostController extends Controller
             return redirect()->back()->withInput();
         }
     }
+
+    public function details($id){
+        $data = [];
+        $data ['current_time'] = date('Y m d, H:m:s');
+        $data ['site_title'] = "Blog";
+        $data ['details_post'] = Post::where('id',$id)->get();
+        // dd(Post::where('id',$id)->get());
+        return view('post',compact('data'));
+    }
 }

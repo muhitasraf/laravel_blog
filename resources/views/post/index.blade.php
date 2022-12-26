@@ -29,8 +29,8 @@
                         <td>
                             <img src="{{url('uploads/post_images/'.$post['thumbnail_path'])}}" height="80px" width="100px" alt="Image"/>
                         </td>
-                        <td>{{$post['content']}}</td>
-                        <td>{{$post['status']}}</td>
+                        <td>{!! \Illuminate\Support\Str::limit(strip_tags($post['content']), 20, '.....') !!}</td>
+                        <td>{{$post['status']==1 ? 'Active' : 'De-Active'}}</td>
                         <td>
                             <a class="btn btn-info mr-1" href="{{route('post.show',$post['id'])}}">Details</a>
                             <a class="btn btn-info mr-1" href="{{route('post.edit',$post['id'])}}">Edit</a>
