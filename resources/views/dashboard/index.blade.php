@@ -1,6 +1,8 @@
+@php
+    use \Illuminate\Support\Str;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,14 +11,13 @@
     <meta name="generator" content="Hugo 0.101.0">
     <meta name="theme-color" content="#563d7c">
     <title>User Dashboard</title>
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">
+    <link href="{{url('assets/css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Include Summernote Editor stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <link href="{{url('assets/css/summernote-bs4.min.css')}}" rel="stylesheet">
 
 
     <style>
@@ -37,7 +38,7 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.6/examples/dashboard/dashboard.css" rel="stylesheet">
+    <link href="{{url('assets/css/dashboard.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -76,14 +77,13 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')
-    </script>
-    <script src="https://getbootstrap.com/docs/4.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url('assets/js/jquery.slim.min.js')}}"></script>
+    <script src="{{url('assets/js/popper.min.js')}}"></script>
+    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('assets/js/holder.min.js')}}"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script src="{{url('assets/js/feather.min.js')}}"></script>
+    <script src="{{url('assets/js/summernote-bs4.min.js')}}"></script>
     <script>
         $('#summernote').summernote({
             placeholder: 'Hello Bootstrap 4',

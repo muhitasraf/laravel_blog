@@ -1,3 +1,6 @@
+@php
+    use \Illuminate\Support\Str;
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -9,15 +12,16 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+    {{-- <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/blog.css')}}" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="container">
-     @include('partials.navbar')
-     @includeWhen(request()->is('/'),'partials.jumbotron')
+    @include('partials.navbar')
+    @includeWhen(request()->is('/'),'partials.jumbotron')
 
     <main role="main" class="container">
         <div class="row">
@@ -32,13 +36,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
-    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+    <script src="{{url('assets/js/jquery.slim.min.js')}}"></script>
+    <script src="{{url('assets/js/popper.min.js')}}"></script>
+    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('assets/js/holder.min.js')}}"></script>
     <script>
         Holder.addTheme('thumb', {
             bg: '#55595c',
