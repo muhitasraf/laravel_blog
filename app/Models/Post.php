@@ -17,4 +17,13 @@ class Post extends Model
         'thumbnail_path',
         'status'
     ];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
 }

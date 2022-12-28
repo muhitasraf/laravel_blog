@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function add(){
         $title = 'Create Category';
         $all_category = Category::select('id','name','slug','status')->paginate(5);
-        return view('category/add',compact('title','all_category'));
+        return view('category/create',compact('title','all_category'));
     }
 
     public function save(Request $request){
@@ -26,7 +26,6 @@ class CategoryController extends Controller
         $category_name = $request->input('category');
         $status = $request->input('status');
         $category_slug = Str::slug($category_name);
-        // dd($request->input());
         $all_category = Category::select('id','name','slug','status')->paginate(5);
         try{
             Category::create(['name'=>$category_name,'slug'=>$category_slug,'status'=>$status]);
@@ -43,13 +42,13 @@ class CategoryController extends Controller
         return view('category/show',compact('title','single_category'));
     }
     public function edit($id){
-        $title = 'All Category';
+        $title = 'Edit Category';
         $single_category = Category::select('id','name','slug','status')->where('id',$id)->get();
         return view('category/edit',compact('title','single_category'));
     }
 
     public function update(Request $request){
-        $title = 'Create Category';
+        $title = 'Update Category';
         $id = $request->input('id');
         $category_name = $request->input('category');
         $status = $request->input('status');

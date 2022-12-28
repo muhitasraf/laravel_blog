@@ -11,15 +11,8 @@
     <meta name="generator" content="Hugo 0.101.0">
     <meta name="theme-color" content="#563d7c">
     <title>User Dashboard</title>
-    <link href="{{url('assets/css/font-awesome.min.css')}}" rel="stylesheet">
-
-    <!-- Bootstrap core CSS -->
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <!-- Include Summernote Editor stylesheet -->
-    <link href="{{url('assets/css/summernote-bs4.min.css')}}" rel="stylesheet">
-
-
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -77,16 +70,15 @@
         </div>
     </div>
 
+    <script src="{{url('assets/js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{url('assets/js/jquery.slim.min.js')}}"></script>
     <script src="{{url('assets/js/popper.min.js')}}"></script>
     <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('assets/js/holder.min.js')}}"></script>
-
-    <script src="{{url('assets/js/feather.min.js')}}"></script>
     <script src="{{url('assets/js/summernote-bs4.min.js')}}"></script>
+    <script src="{{url('assets/js/feather.min.js')}}"></script>
     <script>
         $('#summernote').summernote({
-            placeholder: 'Hello Bootstrap 4',
+            placeholder: 'Write Your Content Here...',
             tabsize: 2,
             height: 100
         });

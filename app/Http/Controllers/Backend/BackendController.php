@@ -13,17 +13,17 @@ class BackendController extends Controller
 {
     public function index(){
         $data = [];
-        $data ['current_time'] = date('Y m d, H:m:s');
-        $data ['site_title'] = "Blog";
+        $current_time = date('Y m d, H:m:s');
+        $site_title = "Blog";
 
         $category = Category::all();
         $all_post = Post::paginate(3);
         $featured_post = Post::orderBy('id','DESC')->limit(3)->get();
-        $data ['category'] = $category;
-        $data ['all_post'] = $all_post;
-        $data ['featured_post'] = $featured_post;
-
-        return view('index',$data);
+        // $data ['category'] = $category;
+        // $data ['all_post'] = $all_post;
+        // $data ['featured_post'] = $featured_post;
+        // dd($all_post);
+        return view('index',compact('all_post','category','featured_post','current_time','site_title'));
     }
 
     public function post($id){

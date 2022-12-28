@@ -1,11 +1,11 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
-            
+
             <li class="nav-item">
                 <a class="nav-link active" href="#submenu0" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                     <span data-feather="home"></span>
-                    Dashboard {{auth()->user()->id}} <span class="sr-only">(current)</span>
+                    Dashboard <span class="sr-only">(current)</span>
                 </a>
             </li>
             <div id='submenu0' class="collapse sidebar-submenu">
@@ -20,7 +20,7 @@
                 </a>
             </div>
             <li class="nav-item">
-                <a class="nav-link active" href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
+                <a class="nav-link" href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                     <span data-feather="list"></span>
                     Category <span class="sr-only">(current)</span>
                 </a>
@@ -33,9 +33,9 @@
                     <span class="menu-collapsed">Create Category</span>
                 </a>
             </div>
-            
+
             <li class="nav-item">
-                <a class="nav-link active" href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
+                <a class="nav-link" href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                     <span data-feather="shopping-cart"></span>
                     Post <span class="sr-only">(current)</span>
                 </a>
@@ -48,7 +48,7 @@
                     <span class="menu-collapsed">All post</span>
                 </a>
             </div>
-            
+
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file"></span>

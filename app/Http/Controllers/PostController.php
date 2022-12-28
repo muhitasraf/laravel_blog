@@ -116,12 +116,22 @@ class PostController extends Controller
         }
     }
 
-    public function details($id){
+    public function details($slug){
         $data = [];
         $data ['current_time'] = date('Y m d, H:m:s');
         $data ['site_title'] = "Blog";
-        $data ['details_post'] = Post::where('id',$id)->get();
+        $data ['details_post'] = Post::where('slug',$slug)->get();
+        // dd($data ['details_post']);
         $category = Category::all();
-        return view('post',compact('data','category'));
+        return view('post/post_details',compact('data','category'));
+    }
+
+    public function categoryWisePost($category_slug){
+        $current_time = date('Y m d, H:m:s');
+        $site_title = "My First Blog";
+        // $category_wise_post = Post::leftJoin('category.id', '=', 'posts.category_id')->where('slug',$category_slug)->get();
+        $category_wise_post = Category::with('posts')->first();
+        dd($category_wise_post);
+        return view('post',compact('current_time','site_title','site_title'));
     }
 }
