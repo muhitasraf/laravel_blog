@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{$category['id']}}</td>
                     <td>{{$category['name']}}</td>
-                    <td>{{$category['slug']}}</td>
+                    <td>{{$category['category_slug']}}</td>
                     <td>{{$category['status']==1 ? 'Active' : 'In-Active'}}</td>
                     <td>
                         <a class="btn btn-info mr-1" href="{{route('categories.show',$category['id'])}}">Details</a>

@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{$category['id']}}</td>
                     <td>{{$category['name']}}</td>
-                    <td>{{$category['slug']}}</td>
+                    <td>{{$category['category_slug']}}</td>
                     <td>{{$category['status']}}</td>
                     <td><a class="btn-info mr-1" href="{{}}">Show</a>|<a href="#">Delete</a></td>
                 </tr>

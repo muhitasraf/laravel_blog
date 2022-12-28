@@ -12,12 +12,12 @@ class CategoryController extends Controller
 {
     public function index(){
         $title = 'All Category';
-        $all_category = Category::select('id','name','slug','status')->paginate(5);
+        $all_category = Category::select('id','name','category_slug','status')->paginate(5);
         return view('category/index',compact('title','all_category'));
     }
     public function add(){
         $title = 'Create Category';
-        $all_category = Category::select('id','name','slug','status')->paginate(5);
+        $all_category = Category::select('id','name','category_slug','status')->paginate(5);
         return view('category/create',compact('title','all_category'));
     }
 
@@ -26,9 +26,9 @@ class CategoryController extends Controller
         $category_name = $request->input('category');
         $status = $request->input('status');
         $category_slug = Str::slug($category_name);
-        $all_category = Category::select('id','name','slug','status')->paginate(5);
+        $all_category = Category::select('id','name','category_slug','status')->paginate(5);
         try{
-            Category::create(['name'=>$category_name,'slug'=>$category_slug,'status'=>$status]);
+            Category::create(['name'=>$category_name,'category_slug'=>$category_slug,'status'=>$status]);
             session()->flash('message','Successfully Added');
             return view('category/index',compact('title','all_category'));
         }catch(Exception $e){
@@ -38,12 +38,12 @@ class CategoryController extends Controller
     }
     public function show($id){
         $title = 'All Category';
-        $single_category = Category::select('id','name','slug','status')->where('id',$id)->get();
+        $single_category = Category::select('id','name','category_slug','status')->where('id',$id)->get();
         return view('category/show',compact('title','single_category'));
     }
     public function edit($id){
         $title = 'Edit Category';
-        $single_category = Category::select('id','name','slug','status')->where('id',$id)->get();
+        $single_category = Category::select('id','name','category_slug','status')->where('id',$id)->get();
         return view('category/edit',compact('title','single_category'));
     }
 
@@ -54,9 +54,9 @@ class CategoryController extends Controller
         $status = $request->input('status');
         $category_slug = Str::slug($category_name);
         try{
-            Category::where('id',$id)->update(['name'=>$category_name,'slug'=>$category_slug,'status'=>$status]);
+            Category::where('id',$id)->update(['name'=>$category_name,'category_slug'=>$category_slug,'status'=>$status]);
             session()->flash('message','Successfully Added');
-            $all_category = Category::select('id','name','slug','status')->paginate(5);
+            $all_category = Category::select('id','name','category_slug','status')->paginate(5);
             return view('category/index',compact('title','all_category'));
         }catch(Exception $e){
             session()->flash('message',$e->getMessage());

@@ -12,7 +12,7 @@ class Post extends Model
         'user_id',
         'category_id',
         'title',
-        'slug',
+        'post_slug',
         'content',
         'thumbnail_path',
         'status'
@@ -22,7 +22,7 @@ class Post extends Model
         return 'slug';
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class,'category_id');
     }

@@ -19,11 +19,11 @@ class CategoryTableSeeder extends Seeder
         Category::create(
             [
                 'name' => "cat1",
-                'slug' => Str::slug('cat1'),
+                'category_slug' => Str::slug('cat1'),
             ],
             [
                 'name' => "cat2",
-                'slug' => Str::slug('cat2'),
+                'category_slug' => Str::slug('cat2'),
             ]
         );
     }

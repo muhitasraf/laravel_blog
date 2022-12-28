@@ -19,8 +19,16 @@ class PostController extends Controller
 
     public function create(){
         $title = 'Create Post';
-        $all_category = Category::select('id','name','slug','status')->get();
+        $all_category = Category::select('id','name','category_slug','status')->get();
         return view('post/create',compact('title','all_category'));
+    }
+
+    public function show($id){
+        $title = 'Edit Post';
+        $single_post = Post::with('category')->where('id',$id)->get();
+        // dd($single_post);
+        $all_category = Category::all();
+        return view('post/show',compact('title','all_category','single_post'));
     }
 
     public function save(Request $request){
@@ -49,7 +57,7 @@ class PostController extends Controller
             'user_id'=>1,
             'category_id'=>$post_category,
             'title'=>$post_title,
-            'slug'=>$title_slug,
+            'post_slug'=>$title_slug,
             'content'=>$post_content,
             'thumbnail_path'=> $filename,
             'status'=> $status
@@ -101,7 +109,7 @@ class PostController extends Controller
             'user_id'=>1,
             'category_id'=>$post_category,
             'title'=>$post_title,
-            'slug'=>$title_slug,
+            'post_slug'=>$title_slug,
             'content'=>$post_content,
             'thumbnail_path'=> $filename,
             'status'=> $status
@@ -116,14 +124,20 @@ class PostController extends Controller
         }
     }
 
-    public function details($slug){
+    public function destroy($id){
+        $title = 'Edit Post';
+        $single_post = Post::where('id',$id)->delete();
+        $all_category = Category::all();
+        return view('post/show',compact('title','all_category','single_post'));
+    }
+
+    public function details($post_slug){
         $data = [];
         $data ['current_time'] = date('Y m d, H:m:s');
         $data ['site_title'] = "Blog";
-        $data ['details_post'] = Post::where('slug',$slug)->get();
-        // dd($data ['details_post']);
+        $data ['details_post'] = Post::where('post_slug',$post_slug)->get();
         $category = Category::all();
-        return view('post/post_details',compact('data','category'));
+        return view('post_details',compact('data','category'));
     }
 
     public function categoryWisePost($category_slug){
@@ -131,7 +145,7 @@ class PostController extends Controller
         $site_title = "My First Blog";
         // $category_wise_post = Post::leftJoin('category.id', '=', 'posts.category_id')->where('slug',$category_slug)->get();
         $category_wise_post = Category::with('posts')->first();
-        dd($category_wise_post);
+        // dd($category_wise_post);
         return view('post',compact('current_time','site_title','site_title'));
     }
 }

@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{$post['id']}}</td>
                         <td class="col-md-1">{{$post['title']}}</td>
-                        <td class="col-md-1">{{$post['slug']}}</td>
+                        <td class="col-md-1">{{$post['post_slug']}}</td>
                         <td>
                             <img src="{{url('uploads/post_images/'.$post['thumbnail_path'])}}" height="80px" width="100px" alt="Image"/>
                         </td>

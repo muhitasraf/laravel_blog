@@ -33,9 +33,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/post/show/{id}', [PostController::class, 'show'])->name('post.show');
     Route::get('/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
     Route::post('/post/update', [PostController::class, 'update'])->name('post.update');
-    Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+    Route::get('/post/delete/{id}', [PostController::class, 'destroy'])->name('post.delete');
 
 });
 
-Route::get('/post/{post:slug}', [PostController::class, 'details'])->name('post.details');
-Route::get('/category/{post:slug}', [PostController::class, 'categoryWisePost'])->name('post.category_wise');
+Route::get('/post/{post:post_slug}', [PostController::class, 'details'])->name('post.details');
+Route::get('/category/{post:category_slug}', [PostController::class, 'categoryWisePost'])->name('post.category_wise');
