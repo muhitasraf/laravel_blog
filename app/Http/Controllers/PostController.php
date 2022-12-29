@@ -143,9 +143,10 @@ class PostController extends Controller
     public function categoryWisePost($category_slug){
         $current_time = date('Y m d, H:m:s');
         $site_title = "My First Blog";
+        $category = Category::all();
         // $category_wise_post = Post::leftJoin('category.id', '=', 'posts.category_id')->where('slug',$category_slug)->get();
-        $category_wise_post = Category::with('posts')->first();
-        // dd($category_wise_post);
-        return view('post',compact('current_time','site_title','site_title'));
+        $category_wise_post = Category::with('posts')->where('category_slug',$category_slug)->first();
+        //  dd($category_wise_post->posts);
+        return view('category_wise_post',compact('current_time','site_title','category','category_wise_post'));
     }
 }
