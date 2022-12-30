@@ -25,10 +25,12 @@
 
     <main role="main" class="container">
         <div class="row">
-            <div class="col-md-8 blog-main">
+            <div class="col-md-9 blog-main">
                 @yield('content')
             </div>
-            @include('partials.sidebar')
+            <aside class="col-md-3 blog-sidebar">
+                @include('partials.sidebar')
+            </aside>
         </div>
     </main>
     @include('partials.footer')

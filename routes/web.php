@@ -39,3 +39,4 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('/post/{post:post_slug}', [PostController::class, 'details'])->name('post.details');
 Route::get('/category/{post:category_slug}', [PostController::class, 'categoryWisePost'])->name('post.category_wise');
+Route::post('/search', [PostController::class, 'search'])->name('post.search');

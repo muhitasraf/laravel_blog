@@ -6,7 +6,6 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -16,13 +15,7 @@ class AuthController extends Controller
         $data = [];
         $data ['current_time'] = date('Y m d, H:m:s');
         $data ['site_title'] = "Blog";
-        $data ['links'] = [
-            'Facebook' => 'facebook.com',
-            'Twtiter' => 'twtiter.com',
-            'Youtube' => 'youtube.com',
-            'Linkdin' => 'linkdin.com',
-            'Instagram' => 'instagram.com'
-        ];
+        $data ['category'] = Category::all();
         return view('register',$data);
     }
 

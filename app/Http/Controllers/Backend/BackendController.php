@@ -4,25 +4,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 
-// use Illuminate\Http\Request as HttpRequest;
-// use Illuminate\Support\Facades\Request;
-// use Illuminate\Support\Facades\Validator;
-// use Illuminate\Support\Str;
-
 class BackendController extends Controller
 {
     public function index(){
-        $data = [];
         $current_time = date('Y m d, H:m:s');
         $site_title = "Blog";
-
         $category = Category::all();
-        $all_post = Post::paginate(3);
-        $featured_post = Post::orderBy('id','DESC')->limit(3)->get();
-        // $data ['category'] = $category;
-        // $data ['all_post'] = $all_post;
-        // $data ['featured_post'] = $featured_post;
-        // dd($all_post);
+        $all_post = Post::with('category','user')->paginate(3);
+        $featured_post = Post::with('category','user')->orderBy('id','DESC')->limit(3)->get();
         return view('index',compact('all_post','category','featured_post','current_time','site_title'));
     }
 

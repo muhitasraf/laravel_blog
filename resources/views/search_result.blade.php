@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
     <div class="blog-post">
-    @foreach ($category_wise_post->posts as $post)
+    @foreach ($search_result as $post)
     <div class="card flex-md-row mb-4 box-shadow blog-post">
         <div class="row">
             <div class="col-md-3">
@@ -15,6 +15,6 @@
         </div>
     </div>
     @endforeach
-    {{-- {!! $category_wise_post->links('pagination::bootstrap-4') !!} --}}
+    {{-- {!! $search_result->links('pagination::bootstrap-4') !!} --}}
     </div>
 @stop
