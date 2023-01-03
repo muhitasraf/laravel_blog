@@ -12,7 +12,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    {{-- <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/blog.css')}}" rel="stylesheet">
 </head>

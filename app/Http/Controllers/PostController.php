@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,8 @@ class PostController extends Controller
 {
     public function index(){
         $title = 'All Post';
-        $all_post = Post::with('category','user')->get();
+        $user_id = Auth::user()->id;
+        $all_post = Post::with('category','user')->where('user_id',$user_id)->get();
         return view('post/index',compact('title','all_post'));
     }
 
@@ -45,14 +47,15 @@ class PostController extends Controller
         if($photo->isValid()){
             $photo->move(public_path().'/uploads/post_images/',$filename);
         }
+        $user_id = Auth::user()->id;
         $post_title = $request->input('post_title');
         $title_slug = Str::slug($post_title, '-', 'bn');
         $post_category = $request->input('post_category');
         $post_content = $request->input('post_content');
         $status = $request->input('status');
         $post_data = [
-            'user_id'=>1,
-            'category_id'=>$post_category,
+            'user_id'=>$user_id,
+            'category_id'=>$post_category,git 
             'title'=>$post_title,
             'post_slug'=>$title_slug,
             'content'=>$post_content,
@@ -95,13 +98,14 @@ class PostController extends Controller
             $filename = $request->input('prev_post_image');
         }
         $id = $request->input('id');
+        $user_id = Auth::user()->id;
         $post_title = $request->input('post_title');
         $title_slug = Str::slug($post_title);
         $post_category = $request->input('post_category');
         $post_content = $request->input('post_content');
         $status = $request->input('status');
         $post_data = [
-            'user_id'=>1,
+            'user_id'=>$user_id,
             'category_id'=>$post_category,
             'title'=>$post_title,
             'post_slug'=>$title_slug,

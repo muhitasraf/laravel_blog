@@ -16,7 +16,7 @@
                 <a class="btn btn-sm btn-outline-secondary" href="{{route('logout')}}">Logout</a>
             @endauth
             @guest
-                <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('register')}}">Sign up</a>
+                <a class="btn btn-sm btn-outline-secondary mr-2" href="{{route('register')}}">SignUp</a>
                 <a class="btn btn-sm btn-outline-secondary" href="{{route('login')}}">Login</a>
             @endguest
         </div>
