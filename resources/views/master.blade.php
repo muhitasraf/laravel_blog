@@ -40,14 +40,14 @@
     <script src="{{url('assets/js/jquery.slim.min.js')}}"></script>
     <script src="{{url('assets/js/popper.min.js')}}"></script>
     <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('assets/js/holder.min.js')}}"></script>
-    <script>
+    {{-- <script src="{{url('assets/js/holder.min.js')}}"></script> --}}
+    {{-- <script>
         Holder.addTheme('thumb', {
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

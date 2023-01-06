@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AppHelper;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
@@ -22,15 +23,13 @@ class CategoryController extends Controller
     }
 
     public function save(Request $request){
-        $title = 'Create Category';
         $category_name = $request->input('category');
         $status = $request->input('status');
-        $category_slug = Str::slug($category_name);
-        $all_category = Category::select('id','name','category_slug','status')->paginate(5);
+        $category_slug = AppHelper::bangla_slug($category_name);
         try{
             Category::create(['name'=>$category_name,'category_slug'=>$category_slug,'status'=>$status]);
             session()->flash('message','Successfully Added');
-            return view('category/index',compact('title','all_category'));
+            return redirect('category');
         }catch(Exception $e){
             session()->flash('message',$e->getMessage());
             return redirect()->back()->withInput();
@@ -48,16 +47,14 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request){
-        $title = 'Update Category';
         $id = $request->input('id');
         $category_name = $request->input('category');
         $status = $request->input('status');
-        $category_slug = Str::slug($category_name);
+        $category_slug = AppHelper::bangla_slug($category_name);
         try{
             Category::where('id',$id)->update(['name'=>$category_name,'category_slug'=>$category_slug,'status'=>$status]);
             session()->flash('message','Successfully Added');
-            $all_category = Category::select('id','name','category_slug','status')->paginate(5);
-            return view('category/index',compact('title','all_category'));
+            return redirect('category');
         }catch(Exception $e){
             session()->flash('message',$e->getMessage());
             return redirect()->back()->withInput();
@@ -65,9 +62,7 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
-        $title = 'All Category';
-        $single_category = Category::where('id',$id)->delete();
-        $all_category = Category::all();
-        return view('category/index',compact('title','all_category'));
+        Category::where('id',$id)->delete();
+        return redirect('category');
     }
 }

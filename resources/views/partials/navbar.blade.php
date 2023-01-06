@@ -4,7 +4,7 @@
             <a class="blog-header-logo text-dark" href="{{url('/')}}">Blog</a>
         </div>
         <div class="col-5 d-flex justify-content-end align-items-center">
-            <div class="input-group">
+            <div class=" input-group">
                 <form class="form-inline" action="{{url('/search')}}" method="post">
                     @csrf
                     <input type="text" name="search" class="form-control form-control-sm mr-2" placeholder="Search Your Content" >
@@ -30,3 +30,8 @@
         @endforeach
     </nav>
 </div>
+
+<script>
+    var height = window.screen.availHeight;
+    var width = window.screen.availWidth;
+</script>

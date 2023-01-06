@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Helpers\AppHelper;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,13 +50,13 @@ class PostController extends Controller
         }
         $user_id = Auth::user()->id;
         $post_title = $request->input('post_title');
-        $title_slug = Str::slug($post_title, '-', 'bn');
+        $title_slug = AppHelper::bangla_slug($post_title);
         $post_category = $request->input('post_category');
         $post_content = $request->input('post_content');
         $status = $request->input('status');
         $post_data = [
             'user_id'=>$user_id,
-            'category_id'=>$post_category,git 
+            'category_id'=>$post_category,
             'title'=>$post_title,
             'post_slug'=>$title_slug,
             'content'=>$post_content,
@@ -100,7 +101,7 @@ class PostController extends Controller
         $id = $request->input('id');
         $user_id = Auth::user()->id;
         $post_title = $request->input('post_title');
-        $title_slug = Str::slug($post_title);
+        $title_slug = AppHelper::bangla_slug($post_title);
         $post_category = $request->input('post_category');
         $post_content = $request->input('post_content');
         $status = $request->input('status');
@@ -132,7 +133,7 @@ class PostController extends Controller
         $data = [];
         $current_time = date('Y m d, H:m:s');
         $site_title = "Blog";
-        $details_post = Post::with('category','user')->where('post_slug',$post_slug)->first();
+        $details_post = Post::with('category')->where('post_slug',$post_slug)->first();
         $category = Category::all();
         return view('post_details',compact('current_time','site_title','category','details_post'));
     }
@@ -141,7 +142,7 @@ class PostController extends Controller
         $current_time = date('Y m d, H:m:s');
         $site_title = "My First Blog";
         $category = Category::all();
-        $category_wise_post = Category::with('posts','posts.user')->where('category_slug',$category_slug)->first();
+        $category_wise_post = Category::with('posts')->where('category_slug',$category_slug)->first();
         return view('category_wise_post',compact('current_time','site_title','category','category_wise_post'));
     }
 
@@ -150,7 +151,7 @@ class PostController extends Controller
         $current_time = date('Y m d, H:m:s');
         $site_title = "My First Blog";
         $category = Category::all();
-        $search_result = Post::with('category','user')->where('title', 'like', '%' .$user_search. '%')
+        $search_result = Post::with('category')->where('title', 'like', '%' .$user_search. '%')
                         ->orWhere('content', 'like', '%' . $user_search . '%')
                         // ->orWhere('name', 'like', '%' . $user_search . '%')
                         ->paginate(5);

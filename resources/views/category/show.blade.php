@@ -24,12 +24,15 @@
                     <td>{{$category['name']}}</td>
                     <td>{{$category['category_slug']}}</td>
                     <td>{{$category['status']}}</td>
-                    <td><a class="btn-info mr-1" href="{{}}">Show</a>|<a href="#">Delete</a></td>
+                    <td>
+                        <a class="btn btn-info mr-1" href="{{route('categories.edit',$category['id'])}}">Edit</a>
+                        <a class="btn btn-info mr-1" href="{{route('categories.delete',$category['id'])}}">Delete</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        
+
     </div>
 </div>
 
